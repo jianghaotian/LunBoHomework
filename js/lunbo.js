@@ -3,6 +3,7 @@ var lunbo = function(config) {
   var $box = $(config.box),       // 轮播图容器
       imgs = config.imgs,         // 图片数组
       len = config.imgs.length,   // 图片数量
+      time = config.time || 2000, // 图片切换时间
       index = 0,                  // 当前图片索引
       timer;                      // 定时器
 
@@ -70,7 +71,7 @@ var lunbo = function(config) {
   }, function() {
     $leftBtn.stop().animate({'opacity': 0}, 'fast');
     $rightBtn.stop().animate({'opacity': 0}, 'fast');
-    timer = setInterval(next, 2000);
+    timer = setInterval(next, time);
   });
 
   // 添加点击事件
@@ -114,7 +115,7 @@ var lunbo = function(config) {
   $box.append($navUl);
 
   // --- 启动定时器 --- //
-  timer = setInterval(next, 2000);
+  timer = setInterval(next, time);
 
   return $box;
 }
